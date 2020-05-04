@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.3.1/jquery.quicksearch.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Veículos</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body {
+                color: #566787;
+                background: #f5f5f5;
+                font-family: 'Varela Round', sans-serif;
+                font-size: 13px;
+            }
+
+            .table-wrapper {
+                background: #fff;
+                padding: 20px 25px;
+                margin: 55px -110px;
+                border-radius: 10px;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            }
+
+            .table-title {
+                padding-bottom: 15px;
+                background: #084d6e;
+                color: #fff;
+                padding: 16px 30px;
+                margin: -20px -25px 10px;
+                border-radius: 3px 3px 0 0;
+            }
+
+            .table-title h2 {
+                margin: 5px 0 0;
+                font-size: 24px;
+            }
+
+            .table-title .btn-group {
+                float: right;
+            }
+
+            .table-title .btn {
+                color: #fff;
+                float: right;
+                font-size: 13px;
+                border: none;
+                min-width: 50px;
+                border-radius: 2px;
+                border: none;
+                outline: none !important;
+                margin-left: 10px;
+            }
+
+            .table-title .btn i {
+                float: left;
+                font-size: 21px;
+                margin-right: 5px;
+            }
+
+            .table-title .btn span {
+                float: left;
+                margin-top: 2px;
+            }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+                padding: 12px 15px;
+                vertical-align: middle;
+            }
+
+            table.table tr th:first-child {
+                width: 60px;
+            }
+
+            table.table tr th:last-child {
+                width: 100px;
+            }
+
+            table.table-striped tbody tr:nth-of-type(odd) {
+                background-color: #fcfcfc;
+            }
+
+            table.table-striped.table-hover tbody tr:hover {
+                background: #f5f5f5;
+            }
+
+            table.table th i {
+                font-size: 13px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table td:last-child i {
+                opacity: 0.9;
+                font-size: 22px;
+                margin: 0 5px;
+            }
+
+            table.table td a {
+                font-weight: bold;
+                color: #566787;
+                display: inline-block;
+                text-decoration: none;
+                outline: none !important;
+            }
+
+            table.table td a:hover {
+                color: #2196F3;
+            }
+
+            table.table td a.edit {
+                color: #FFC107;
+            }
+
+            table.table td a.delete {
+                color: #F44336;
+            }
+
+            table.table td i {
+                font-size: 19px;
+            }
+
+            table.table .avatar {
+                border-radius: 50%;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+
+            .pagination {
+                float: right;
+                margin: 0 0 5px;
+            }
+
+            .pagination li a {
+                border: none;
+                font-size: 13px;
+                min-width: 30px;
+                min-height: 30px;
+                color: #999;
+                margin: 0 2px;
+                line-height: 30px;
+                border-radius: 2px !important;
+                text-align: center;
+                padding: 0 6px;
+            }
+
+            .pagination li a:hover {
+                color: #666;
+            }
+
+            .pagination li.active a, .pagination li.active a.page-link {
+                background: #03A9F4;
+            }
+
+            .pagination li.active a:hover {
+                background: #0397d6;
+            }
+
+            .pagination li.disabled i {
+                color: #ccc;
+            }
+
+            .pagination li i {
+                font-size: 16px;
+                padding-top: 6px
+            }
+
+            .hint-text {
+                float: left;
+                margin-top: 10px;
+                font-size: 13px;
+            }
+
+            /* Custom checkbox */
+            .custom-checkbox {
+                position: relative;
+            }
+
+            .custom-checkbox input[type="checkbox"] {
+                opacity: 0;
+                position: absolute;
+                margin: 5px 0 0 3px;
+                z-index: 9;
+            }
+
+            .custom-checkbox label:before {
+                width: 18px;
+                height: 18px;
+            }
+
+            .custom-checkbox label:before {
+                content: '';
+                margin-right: 10px;
+                display: inline-block;
+                vertical-align: text-top;
+                background: white;
+                border: 1px solid #bbb;
+                border-radius: 2px;
+                box-sizing: border-box;
+                z-index: 2;
+            }
+
+            .custom-checkbox input[type="checkbox"]:checked + label:after {
+                content: '';
+                position: absolute;
+                left: 6px;
+                top: 3px;
+                width: 6px;
+                height: 11px;
+                border: solid #000;
+                border-width: 0 3px 3px 0;
+                transform: inherit;
+                z-index: 3;
+                transform: rotateZ(45deg);
+            }
+
+            .custom-checkbox input[type="checkbox"]:checked + label:before {
+                border-color: #03A9F4;
+                background: #03A9F4;
+            }
+
+            .custom-checkbox input[type="checkbox"]:checked + label:after {
+                border-color: #fff;
+            }
+
+            .custom-checkbox input[type="checkbox"]:disabled + label:before {
+                color: #b8b8b8;
+                cursor: auto;
+                box-shadow: none;
+                background: #ddd;
+            }
+
+            /* Modal styles */
+            .modal .modal-dialog {
+                max-width: 400px;
+            }
+
+            .modal .modal-header, .modal .modal-body, .modal .modal-footer {
+                padding: 20px 30px;
+            }
+
+            .modal .modal-content {
+                border-radius: 3px;
+            }
+
+            .modal .modal-footer {
+                background: #ecf0f1;
+                border-radius: 0 0 3px 3px;
+            }
+
+            .modal .modal-title {
+                display: inline-block;
+            }
+
+            .modal .form-control {
+                border-radius: 2px;
+                box-shadow: none;
+                border-color: #dddddd;
+            }
+
+            .modal textarea.form-control {
+                resize: vertical;
+            }
+
+            .modal .btn {
+                border-radius: 2px;
+                min-width: 100px;
+            }
+
+            .modal form label {
+                font-weight: normal;
+            }
+         body { background-color:#F8F8FF; }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                // Activate tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+
+                // Select/Deselect checkboxes
+                var checkbox = $('table tbody input[type="checkbox"]');
+                $("#selectAll").click(function () {
+                    if (this.checked) {
+                        checkbox.each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        checkbox.each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+                checkbox.click(function () {
+                    if (!this.checked) {
+                        $("#selectAll").prop("checked", false);
+                    }
+                });
+            });
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+        <script type="text/javascript">
+            $("#pla").mask("AAA-9A99");
+        </script>
+
+
+    </head>
+    <body>
+    
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#063e58;" >
+            <div class="container-fluid"> <img src="img/logo.png" style="width:8%;  padding-bottom:0; margin: 0px ">
+                <div class="navbar-header">
+
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/" type="button" class="glyphicon glyphicon-home" ></a></li>
+                    <li><a href="/alugueis"> Aluguel</a></li>
+                    <li><a href="/veiculos"> Veículos</a></li>
+                    <li><a href="/categorias"> Categorias</a></li>
+                    <li><a href="/planos"> Planos</a></li>
+                    <li><a href="/clientes"> Clientes</a></li>
+                    <li><a href="/funcionarios"> Funcionários</a></li>
+                    <li>    <a> </a>       </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/funcionarios"><span class="glyphicon glyphicon-user"></span> Minha Conta </a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Veículos</h2>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <span th:if="${authentication.principal.gerente == true}">
+                                <a href="#adicionarClienteModal" class="btn btn-primary" data-toggle="modal"><i
+                                        class="material-icons">&#xE147;</i>
+                                    <span>Adicionar Novo </span>
+                                </a>
+                                <a th:href="@{'/veiculos/report'}" th:target="_blank" class="btn btn-primary"
+                                   title="Imprimir relatório">
+                                    <i class="fa fa-print"></i>
+                                </a> </span>
+                        </div>
+                    </div>
+                </div>
+
+                <table id="minhaTabela" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th><a href="/categorias">Classe</a></th>
+                            <th>Placa</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Ano</th>
+                            <th>Cor</th>
+                            <th>Quilometragem</th>
+                            <th>Observações</th>
+<!--                            <th>Disponibilidade</th>-->
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <script language="Javascript">
+                        function confirmacao(id) {
+                            return confirm("Deseja remover?");
+                        }
+                    </script>                   
+                    <tr th:each="ve: ${veiculos}">
+                        <td th:text="${ve.categoria.codigo + ' R$ ' + ve.categoria.precoDiaria }"/>
+                        <td th:text="${ve.placa}"/>
+                        <td th:text="${ve.marca}"/>
+                        <td th:text="${ve.modelo}"/>
+                        <td th:text="${ve.anoModelo}"/>
+                        <td th:text="${ve.cor}"/>
+                        <td th:text="${ve.kilometragem+ ' Km  '}"></td>
+                        <td th:text="${ve.observacao}"></td>
+<!--                        <td th:text="${ve.disponivel}"></td>-->
+<!--                        <td>-->
+<!--                            <input type="checkbox" th:checked="${ve.disponivel}" disabled/>-->
+<!--                        </td>-->
+
+
+                        <td>
+                            <a th:href="@{'/veiculos/' + ${ve.placa}}" class="edit" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a th:href="@{'/veiculos/' + ${ve.placa} + '/delete'}" onclick=" return confirmacao()" class="delete" data-toggle="modal"><i
+                                    class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>         
+        <!-- Edit Modal HTML -->
+        <div id="adicionarClienteModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST" action="/veiculos">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Adicionar Veículo</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="form-group">
+                                <label>Categorias</label>
+                                <select name="categoria">
+                                    <option th:each="cat : ${categorias}" th:value="${cat.codigo}"
+                                            th:text="${cat.codigo + ' R$ ' + cat.precoDiaria} "></option>
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Placa</label>
+                                <input type="text" name="placa" id="pla" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Marca</label>
+                                <input type="text" name="marca" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Modelo</label>
+                                <input type="text" name="modelo" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Quilometragem</label>
+                                <input type="number" name="kilometragem" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Observação</label>
+                                <textarea type="text" cols="10" rows="10" name="observacao" class="form-control" required> </textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Ano do Modelo</label>
+
+                                <select name="anoModelo">
+                                    <option>2000</option>
+                                    <option>2001</option>
+                                    <option>2002</option>
+                                    <option>2003</option>
+                                    <option>2004</option>
+                                    <option>2005</option>
+                                    <option>2006</option>
+                                    <option>2007</option>
+                                    <option>2008</option>
+                                    <option>2009</option>
+                                    <option>2010</option>
+                                    <option>2011</option>
+                                    <option>2012</option>
+                                    <option>2013</option>
+                                    <option>2014</option>
+                                    <option>2015</option>
+                                    <option>2016</option>
+                                    <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Cor</label>
+                                <select name="cor">
+                                    <option>Preto</option>
+                                    <option>Branco</option>
+                                    <option>Prata</option>
+                                    <option>Cinza</option>
+                                    <option>Marron</option>
+                                    <option>Laranja</option>
+                                    <option>Vermelho</option>
+                                    <option>Rosa</option>
+                                    <option>Roxo</option>
+                                    <option>Amarelo</option>
+                                    <option>Verde</option>
+                                    <option>Azul</option>
+                                </select>
+                            </div>
+
+<!--                            <div class="form-group">-->
+<!--                                <label>Disponibilidade</label>-->
+
+<!--                                <input type="checkbox" name="disponivel" required>-->
+<!--                            </div>-->
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" class="btn btn-primary" value="Adicionar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+        <script>
+                                $(document).ready(function () {
+                                    $('#minhaTabela').DataTable({
+                                        "language": {
+                                            "sSearch": "Pesquisar",
+                                            "lengthMenu": "Mostrando _MENU_ registros por página",
+                                            "zeroRecords": "Nada encontrado",
+                                            "oPaginate": {
+                                                "sNext": "Próximo",
+                                                "sPrevious": "Anterior",
+                                            },
+                                            "info": "Mostrando página _PAGE_ de _PAGES_",
+                                            "infoEmpty": "Nenhum registro disponível",
+                                            "infoFiltered": "(filtrado de _MAX_ registros no total)",
+
+"sEmptyTable": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ".",
+                "sLengthMenu": "_MENU_ resultados por página",
+                "sLoadingRecords": "Carregando...",
+                "sProcessing": "Processando...",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sSearch": "Pesquisar",
+                "oPaginate": {
+                    "sNext": "Próximo",
+                    "sPrevious": "Anterior",
+                    "sFirst": "Primeiro",
+                    "sLast": "Último"
+                },
+                "oAria": {
+                    "sSortAscending": ": Ordenar colunas de forma ascendente",
+                    "sSortDescending": ": Ordenar colunas de forma descendente"
+                }
+
+            }
+        });
+    });
+    </script>
+
+
+
+        <div class="container"
+             th:unless="${#httpServletRequest.getParameter('error') == null}">
+            <div class="alert alert-secondary">
+                <span th:text="${#httpServletRequest.getParameter('error')}"></span>
+                <img src="img/erro.png" style="width:18%; padding-bottom:20px; margin: 10px auto 0px auto; display:block">
+
+
+                .
+          </div>

@@ -1,0 +1,1 @@
+INSERT INTO FUNCIONARIO (cpf, login, nome, senha, gerente) VALUES ('451.159.600-01', 'admin', 'Admin', 'admin', TRUE);

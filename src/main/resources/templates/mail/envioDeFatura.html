@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <body>
+    Olá segue o link para pagamento de mensalidade, Sr (a) <p th:text="${nome}" </p>
+    <div>
+    <a mp-mode="dftl" href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=106091683-0a3a772a-7943-4227-b63a-cf5b1b1da3d1" name="MP-payButton" class='blue-ar-l-rn-brall'>Clique aqui</a>
+    <script type="text/javascript">
+(function(){function $MPC_load(){window.$MPC_loaded !== true && (function(){var s = document.createElement("script");s.type = "text/javascript";s.async = true;s.src = document.location.protocol+"//secure.mlstatic.com/mptools/render.js";var x = document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);window.$MPC_loaded = true;})();}window.$MPC_loaded !== true ? (window.attachEvent ?window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;})();
+    </script>
+
+</div>
+
+        <hr size="1" />
+        <table>
+            <tr>
+                <td style="font-family:tahoma,arial,verdana; font-size:11px; text-align:center" valign="top">
+                    <a href="https://alucar-veiculos.herokuapp.com/" target="_blank"><img  src="https://alucar-veiculos.herokuapp.com/img/logo.png" width="170" height="75"   border="0" /></a>
+                </td>
+                <td style="font-family:tahoma,arial,verdana; font-size:12px; padding-left:10px">
+                    <strong>Alucar</strong>
+                    <br />
+                    <strong>Fone:</strong> (21) 2410 7200
+                    (21) 9815-60715
+                    <br />
+                    <strong>Site:</strong> <a href="https://www.tecmundo.com.br/" target="_blank">https://alucar-veiculos.herokuapp.com/</a>
+                    <br />
+                    <strong>Twitter:</strong>@Alucar
+                    <br /></td> </tr></table>
+
+    </body>
+</html>

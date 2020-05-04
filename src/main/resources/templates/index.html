@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        <title>Alucar Veículos</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <style type="text/css">
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }         
+        </style>
+        
+    </head>
+
+    <body>
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#063e58;" > 
+             
+            <div class="container-fluid">  <img src="img/logo.png" class="row justify-content-center align-items-center" style="width:8%;  padding-bottom:0; margin: 0px ">
+                <div class="navbar-header"> 
+                    
+                </div>
+                <ul class="nav navbar-nav"> 
+                    <li><a href="/" type="button" class="glyphicon glyphicon-home" > </a></li>
+<!--                    <li><a href="/"> Início</a></li>-->
+<!--                    <li> class="active"><a href="/">Início</a></li>-->
+                  
+                    <li><a href="/alugueis"> Aluguéis</a></li>
+                    <li><a href="/veiculos"> Veículos</a></li>
+                    <li><a href="/categorias"> Categorias</a></li>
+                    <li><a href="/planos"> Planos</a></li>
+                    <li><a href="/clientes"> Clientes</a></li>
+                    <li><a href="/funcionarios"> Funcionários</a></li>
+                    <li>    <a> </a>       </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Relátorios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:target="_blank" href="alugueis/reportFinancasTotal">Controle financeiro</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="alugueis/report/CONCLUIDO">Aluguéis concluidos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="alugueis/report/EM_ANDAMENTO">Aluguéis em aberto</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="alugueis/report/ATRASADO">Aluguéis em atraso</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="alugueis/report/TODOS">Todos aluguéis </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="clientes/report">Todos Clientes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="veiculos/report">Todos Veículos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:target="_blank" href="funcionarios/report">Todos Funcionários</a>
+
+                        </div>
+                    </li>
+                    <li><a href="/funcionarios"><span class="glyphicon glyphicon-user"></span> Minha Conta </a></li>
+                    <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="col-12"><img src="img/imagem.jpg" style="width:100%; padding-bottom:10px; margin: 0px auto 0px auto; display:block">
+
+        </div>
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Olá,venha conhecer mais sobre sua empresa.</h1>
+                <p>Uma empresa especializada em aluguel de carros no Brasil. Com nossa experiência de 3 anos, gostaríamos de convidar você a repensar e a construir um novo significado para a mobilidade.</p>
+                <p><a class="btn btn-primary btn-lg" href="/sobre" role="button">Saber mais &raquo;</a></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>Emissão de relatórios</h2>
+                    <p>Reúna informações sobre aluguéis, veículos, funcionários e clientes. </p>
+
+
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Selecionar relátorio
+                        </button>
+                        <div class="dropdown-menu">
+                            <p> <a class="dropdown-item" href="alugueis/report">Aluguéis</a> </p>
+                            <p>  <a class="dropdown-item" href="clientes/report">Clientes</a> </p>
+                            <p> <a class="dropdown-item" href="veiculos/report">Veículos</a> </p>                       
+                            <p> <a class="dropdown-item" href="funcionarios/report">Funcionários</a> </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+            <footer>
+                <p>&copy; Company 2019</p>
+            </footer>
+        </div> <!-- /container -->
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </body>
+</html>
